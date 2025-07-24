@@ -2,7 +2,7 @@ import numpy as np
 import torch
 from tqdm import tqdm
 from Recon.kaczmarzReg_cheb import kaczmarz_tensor_cheb
-from ATCTTC_Cheb import ATCTTC_optimization,tensor_cheb_transform
+from ATCTTC import ATCTTC_optimization,tensor_cheb_transform
 from utils.plot_Phan import plot_slice
 from utils.DataProcess import normalize,denormalize_core
 
