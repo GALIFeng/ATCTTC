@@ -24,7 +24,7 @@ def generate_observed_tensor(tensor, sparsity=0.1, sampling_method="random", dow
     observed_tensor.real[:, ~mask] = np.nan
     return observed_tensor, mask
 
-def tensor_completion_ATCTTC_pytorch(S_downsampled, mask, ranks, lr):  # [175,37,37,37]
+def tensor_completion_ATCTTC_pytorch(S_downsampled, mask, ranks, lr): 
     if not isinstance(S_downsampled, torch.Tensor):
         raise ValueError("Input matrix must be a PyTorch Tensor.")
 
@@ -48,14 +48,14 @@ if __name__ == "__main__":
     #  这里改标定序号和模体，C=5，M=2或者C=6，M=3
     Calibration_num = 6
     Meas_num = 3
-    Phantom = "Resolution"   # Shape, Resolution, Concentration
+    Phantom = "Resolution"   # 切换模体：Shape, Resolution, Concentration
 
     scale = 1       # 改尺度重建
     snr = 7
     lr = 0.05
     ranks = [15, 15, 15]
 
-    sparsity = 0.0625   # 改观测稀疏度；0.015625
+    sparsity = 0.0625   # 改观测稀疏度：0.015625
     downsample = 1      # 采样方式
     sampling_method = "random"if downsample else "downsample"
     downsample_factor = None if downsample else (2, 2, 2)
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     S_downsampled_flat, norm_param = normalize(S[:, mask])    
     S_downsampled = np.zeros_like(S)
     S_downsampled[:, mask] = S_downsampled_flat
-    S_completed_cheb_ = tensor_completion_ATCTTC_pytorch(torch.from_numpy(S_downsampled), torch.from_numpy(mask),ranks,lr=lr) # (175,37,37,37)
+    S_completed_cheb_ = tensor_completion_ATCTTC_pytorch(torch.from_numpy(S_downsampled), torch.from_numpy(mask),ranks,lr=lr) 
 
     # 系统矩阵去归一化
     S_completed_cheb = denormalize_core(S_completed_cheb_, S0_shape, norm_param)   
