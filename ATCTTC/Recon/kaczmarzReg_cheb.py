@@ -1,5 +1,5 @@
 import numpy as np
-from ATCTTC_Cheb import tensor_cheb_transform
+from ATCTTC import tensor_cheb_transform
 
 def computeSliceEnergy(S):
     Nf = S.shape[0]
