@@ -67,11 +67,9 @@ def kaczmarz_tensor_cheb(S, U,
     Tensor-form Kaczmarz with Tikhonov and TV regularization.
 
     Args:
-      S: ndarray, shape (Nf, Nx, Ny, Nz)
+      S: ndarray, shape = Core_shape
       U: ndarray, shape (Nf,)
-      C0: initial tensor (Nx,Ny,Nz)
       lambd: Tikhonov weight
-      tv_weight: TV regularization weight
       tv_iters: TV iterations per slice
     """
     Nf = S.shape[0]
