@@ -77,7 +77,7 @@ def kaczmarz_tensor_cheb(S, U,
 
         if shuffle:
             np.random.shuffle(idx)
-        # 更新切比雪夫系数 Z_cheb
+        # 1. 更新切比雪夫系数 Z_cheb
         for f in idx:
             if energy[f] == 0: continue
             inner_prod = np.tensordot(S[f], Z_cheb, axes=3)
