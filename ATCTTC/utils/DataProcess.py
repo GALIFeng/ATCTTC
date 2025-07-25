@@ -43,7 +43,7 @@ def denormalize_core(tensor_core, S_shape, normalization_params):
     - normalization_params: 包含实部和虚部均值与标准差的字典。
 
     返回：
-    - denormalized_tensor: 解归一化后的核心张量。
+    - denormalized_tensor: 解归一化后的切比雪夫张量核心。
     """
     # 获取归一化参数
     mu_real = normalization_params['mu_real']
@@ -64,7 +64,7 @@ def denormalize_core(tensor_core, S_shape, normalization_params):
     G_scaled_imag = tensor_core.imag * std_imag
     G_scaled = G_scaled_real + 1j * G_scaled_imag
 
-    # 将各部分相加，得到解归一化后的核心张量
+    # 将各部分相加，得到解归一化后的切比雪夫张量核心
     denormalized_tensor = G_scaled + M_core
     
     return denormalized_tensor
